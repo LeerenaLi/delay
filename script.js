@@ -27,12 +27,15 @@ const display = () => {
     const paragraph = document.querySelector('.output');
 
 
-    input.addEventListener('change', () => {
+    input.addEventListener('input', (e) => {
+        e.preventDefault();
         setTimeout(() => {
             paragraph.textContent = input.value;
             console.log('input.value: ', input.value);
-            input.value = '';
         }, 300);
+        input.addEventListener('change', () => {
+            input.value = '';
+        });
     });
 };
 display();
